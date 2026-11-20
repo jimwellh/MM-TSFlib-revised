@@ -1,0 +1,45 @@
+[project]
+name = "mm-tsflib-revised"
+version = "0.1.0"
+description = "Audit of MM-TSFlib / Time-MMD multimodal forecasting gains"
+readme = "README.md"
+# sktime 0.16.1 caps Python below 3.12; torch >= 2.9 drops 3.9, so 3.11 is the overlap.
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    # RTX 50-series (sm_120) needs a CUDA 12.8 build; 2.7.x is the oldest line that ships one.
+    # The original environment.txt pinned torch 2.4.0, which has no sm_120 kernels.
+    "torch==2.7.1",
+    # Kept at environment.txt versions: legacy code uses np.Inf (removed in numpy 2)
+    # and positional DataFrame.drop axis (removed in pandas 2).
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "scikit-learn==1.2.2",
+    "matplotlib==3.7.0",
+    "einops==0.4.0",
+    "sympy",
+    "sktime==0.16.1",
+    "patool==1.12",
+    "tqdm==4.66.5",
+    "reformer-pytorch==1.4.4",
+    "local-attention==1.4.4",
+    "axial-positional-embedding==0.2.1",
+    "product-key-memory==0.1.10",
+    "transformers==4.40.2",
+    "tokenizers==0.19.1",
+    "huggingface-hub>=0.23.0,<1.0",
+    "sentencepiece==0.1.99",
+    "gensim==4.3.3",
+    "nltk==3.8.1",
+]
+
+[tool.uv]
+environments = ["sys_platform == 'win32'", "sys_platform == 'linux'"]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }

@@ -10,8 +10,8 @@ test_results/
 # Local experiment log and analysis notes (kept out of the public fork)
 notes/
 
-# Local-only setup, kept out of the public fork
+# Local-only setup, kept out of the public fork.
+# pyproject.toml/uv.lock stay public for a reproducible environment;
+# requires-python in pyproject.toml makes .python-version redundant.
 CLAUDE.md
-pyproject.toml
-uv.lock
 .python-version
