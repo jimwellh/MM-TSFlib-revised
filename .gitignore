@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Run outputs written relative to CWD by run.py / exp/*.py
+checkpoints/
+results/
+test_results/
+
+# Local experiment log and analysis notes (kept out of the public fork)
+notes/
+
+# Local-only setup, kept out of the public fork
+CLAUDE.md
+pyproject.toml
+uv.lock
+.python-version
